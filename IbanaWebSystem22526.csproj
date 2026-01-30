@@ -121,6 +121,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Ibana.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -210,6 +211,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Ibana.aspx.cs">
+      <DependentUpon>Ibana.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ibana.aspx.designer.cs">
+      <DependentUpon>Ibana.aspx</DependentUpon>
     </Compile>
     <Compile Include="MySite.Master.cs">
       <DependentUpon>MySite.Master</DependentUpon>
