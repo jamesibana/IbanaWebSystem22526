@@ -15,7 +15,7 @@
             <asp:TextBox ID="txtUsername" class="form-control" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnSubmit" class="btn btn-success" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
             <br />
             <asp:Label ID="lblDisplayMsg" runat="server" Text=""></asp:Label>
         </section>

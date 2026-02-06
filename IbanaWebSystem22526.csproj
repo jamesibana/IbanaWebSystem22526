@@ -122,6 +122,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Ibana.aspx" />
+    <Content Include="MyPrelimIbana.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -151,6 +152,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="MySite.Master" />
+    <Content Include="MyPrelimSite.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -218,6 +220,20 @@
     </Compile>
     <Compile Include="Ibana.aspx.designer.cs">
       <DependentUpon>Ibana.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyPrelimIbana.aspx.cs">
+      <DependentUpon>MyPrelimIbana.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyPrelimIbana.aspx.designer.cs">
+      <DependentUpon>MyPrelimIbana.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyPrelimSite.Master.cs">
+      <DependentUpon>MyPrelimSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyPrelimSite.Master.designer.cs">
+      <DependentUpon>MyPrelimSite.Master</DependentUpon>
     </Compile>
     <Compile Include="MySite.Master.cs">
       <DependentUpon>MySite.Master</DependentUpon>
