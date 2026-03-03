@@ -11,7 +11,7 @@ namespace IbanaWebSystem22526
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblMessage.Visible = false;
         }
 
         protected void lbtnAddNewRecord_Click(object sender, EventArgs e)
@@ -27,6 +27,18 @@ namespace IbanaWebSystem22526
             GridView1.Visible = true;
             lbtnAddNewRecord.Visible = true;
             SqlDataSource2.Insert();
+        }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            lblMessage.Visible = true;
+            lblMessage.Text = "A record was deleted";
+        }
+
+        protected void SqlDataSource2_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            lblMessage.Visible = true;
+            lblMessage.Text = "A new record was added";
         }
     }
 }

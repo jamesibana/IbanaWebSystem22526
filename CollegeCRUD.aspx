@@ -1,21 +1,38 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MySite.Master" AutoEventWireup="true" CodeBehind="CollegeCRUD.aspx.cs" Inherits="IbanaWebSystem22526.CollegeCRUD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="collegeID" DataSourceID="SqlDataSource2">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="collegeID" DataSourceID="SqlDataSource2" class="table table-hover" OnRowDeleted="GridView1_RowDeleted">
         <Columns>
+            <asp:TemplateField HeaderText="No.">
+                <ItemTemplate>
+                    <%# Container.DataItemIndex + 1 %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="collegeID" HeaderText="collegeID" InsertVisible="False" ReadOnly="True" SortExpression="collegeID" Visible="False" />
             <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
             <asp:CheckBoxField DataField="Deleted" HeaderText="Deleted" SortExpression="Deleted" Visible="False" />
+            <asp:TemplateField HeaderText="Action" ShowHeader="False">
+                <ItemTemplate>
+                    &nbsp;<asp:Button ID="btnEdit" runat="server" CommandName="Select" Text="Edit" class="btn btn-outline-primary" />
+                    &nbsp;<asp:Button ID="btnDelete" runat="server" CommandName="Delete" Text="Delete" class="btn btn-danger" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM [tblCollege]" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT collegeID, Code, Description, Deleted FROM tblCollege WHERE (Deleted = 0)" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)" DeleteCommand="UPDATE tblCollege SET Deleted = ? WHERE (collegeID = ?)" OnInserted="SqlDataSource2_Inserted">
+        <DeleteParameters>
+            <asp:Parameter DefaultValue="1" Name="?" />
+        </DeleteParameters>
         <InsertParameters>
             <asp:ControlParameter ControlID="txtCode" Name="?" PropertyName="Text" />
             <asp:ControlParameter ControlID="txtDescription" Name="?" PropertyName="Text" />
             <asp:Parameter DefaultValue="0" Name="?" />
         </InsertParameters>
     </asp:SqlDataSource>
+
+    <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-danger"></asp:Label>
+    <br />
 
     <asp:LinkButton ID="lbtnAddNewRecord" runat="server" OnClick="lbtnAddNewRecord_Click">Add New Record</asp:LinkButton>
 
