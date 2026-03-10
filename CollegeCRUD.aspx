@@ -20,20 +20,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT collegeID, Code, Description, Deleted FROM tblCollege WHERE (Deleted = 0)" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)" DeleteCommand="UPDATE tblCollege SET Deleted = ? WHERE (collegeID = ?)" OnInserted="SqlDataSource2_Inserted" UpdateCommand="UPDATE tblCollege SET Code = ?, Description = ? WHERE (collegeID = ?)" OnUpdated="SqlDataSource2_Updated">
-        <DeleteParameters>
-            <asp:Parameter DefaultValue="1" Name="?" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:ControlParameter ControlID="txtCode" Name="?" PropertyName="Text" />
-            <asp:ControlParameter ControlID="txtDescription" Name="?" PropertyName="Text" />
-            <asp:Parameter DefaultValue="0" Name="?" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:ControlParameter ControlID="txtCode" DefaultValue="" Name="?" PropertyName="Text" />
-            <asp:ControlParameter ControlID="txtDescription" DefaultValue="" Name="?" PropertyName="Text" />
-            <asp:ControlParameter ControlID="GridView1" Name="?" PropertyName="SelectedValue" />
-        </UpdateParameters>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString3 %>" ProviderName="<%$ ConnectionStrings:ConnectionString3.ProviderName %>" SelectCommand="SELECT * FROM [tblCollege]" OnInserted="SqlDataSource2_Inserted" OnUpdated="SqlDataSource2_Updated">
     </asp:SqlDataSource>
 
     <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-success"></asp:Label>
