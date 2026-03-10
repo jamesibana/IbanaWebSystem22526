@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MySite.Master" AutoEventWireup="true" CodeBehind="CollegeCRUD.aspx.cs" Inherits="IbanaWebSystem22526.CollegeCRUD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="collegeID" DataSourceID="SqlDataSource2" class="table table-hover" OnRowDeleted="GridView1_RowDeleted">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="collegeID" DataSourceID="SqlDataSource2" class="table table-hover" OnRowDeleted="GridView1_RowDeleted" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
         <Columns>
             <asp:TemplateField HeaderText="No.">
                 <ItemTemplate>
@@ -14,13 +14,13 @@
             <asp:CheckBoxField DataField="Deleted" HeaderText="Deleted" SortExpression="Deleted" Visible="False" />
             <asp:TemplateField HeaderText="Action" ShowHeader="False">
                 <ItemTemplate>
-                    &nbsp;<asp:Button ID="btnEdit" runat="server" CommandName="Select" Text="Edit" class="btn btn-outline-primary" />
+                    &nbsp;<asp:Button ID="btnEdit" runat="server" CommandName="Select" Text="Edit" class="btn btn-outline-primary" OnClick="btnEdit_Click" />
                     &nbsp;<asp:Button ID="btnDelete" runat="server" CommandName="Delete" Text="Delete" class="btn btn-danger" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT collegeID, Code, Description, Deleted FROM tblCollege WHERE (Deleted = 0)" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)" DeleteCommand="UPDATE tblCollege SET Deleted = ? WHERE (collegeID = ?)" OnInserted="SqlDataSource2_Inserted">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT collegeID, Code, Description, Deleted FROM tblCollege WHERE (Deleted = 0)" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)" DeleteCommand="UPDATE tblCollege SET Deleted = ? WHERE (collegeID = ?)" OnInserted="SqlDataSource2_Inserted" UpdateCommand="UPDATE tblCollege SET Code = ?, Description = ? WHERE (collegeID = ?)" OnUpdated="SqlDataSource2_Updated">
         <DeleteParameters>
             <asp:Parameter DefaultValue="1" Name="?" />
         </DeleteParameters>
@@ -29,9 +29,14 @@
             <asp:ControlParameter ControlID="txtDescription" Name="?" PropertyName="Text" />
             <asp:Parameter DefaultValue="0" Name="?" />
         </InsertParameters>
+        <UpdateParameters>
+            <asp:ControlParameter ControlID="txtCode" DefaultValue="" Name="?" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtDescription" DefaultValue="" Name="?" PropertyName="Text" />
+            <asp:ControlParameter ControlID="GridView1" Name="?" PropertyName="SelectedValue" />
+        </UpdateParameters>
     </asp:SqlDataSource>
 
-    <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-danger"></asp:Label>
+    <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-success"></asp:Label>
     <br />
 
     <asp:LinkButton ID="lbtnAddNewRecord" runat="server" OnClick="lbtnAddNewRecord_Click">Add New Record</asp:LinkButton>
@@ -44,7 +49,9 @@
         <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
         <br />
 
-        <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+        <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-primary"/>
+        <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-primary" OnClick="btnUpdate_Click" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-secondary" OnClick="btnCancel_Click"/>
     </asp:Panel>
 
 

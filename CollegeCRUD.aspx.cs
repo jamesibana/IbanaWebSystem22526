@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace IbanaWebSystem22526
 {
+
+
     public partial class CollegeCRUD : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -14,31 +17,87 @@ namespace IbanaWebSystem22526
             lblMessage.Visible = false;
         }
 
+
+        #region "UPDATE"
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            pageAddEdit();
+            btnSave.Visible = false;
+            btnUpdate.Visible = true;
+        }
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+            txtDescription.Text = row.Cells[3].Text;
+            txtCode.Text = row.Cells[2].Text;
+        }
+        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView1.SelectedRow;
+            txtDescription.Text = row.Cells[3].Text;
+            txtCode.Text = row.Cells[2].Text;
+        }
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            SqlDataSource2.Update();
+        }
+        protected void SqlDataSource2_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            pageInitialize();
+            myMessage("A record was updated");
+        }
+        #endregion
+
+        #region "INSERT"
         protected void lbtnAddNewRecord_Click(object sender, EventArgs e)
+        {
+            pageAddEdit();
+            btnSave.Visible = true;
+            btnUpdate.Visible = false;
+        }
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            SqlDataSource2.Insert();
+        }
+        protected void SqlDataSource2_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            pageInitialize();
+            myMessage("A new record was inserted");
+        }
+        #endregion
+
+        #region "MyMethods"
+        public void pageInitialize()
+        {
+            txtCode.Text = "";
+            txtDescription.Text = "";
+            pnlAddNewRecord.Visible = false;
+            GridView1.Visible = true;
+            lbtnAddNewRecord.Visible = true;
+        }
+        public void pageAddEdit()
         {
             pnlAddNewRecord.Visible = true;
             GridView1.Visible = false;
             lbtnAddNewRecord.Visible = false;
         }
-
-        protected void btnSave_Click(object sender, EventArgs e)
+        public void myMessage(string msg)
         {
-            pnlAddNewRecord.Visible = false;
-            GridView1.Visible = true;
-            lbtnAddNewRecord.Visible = true;
-            SqlDataSource2.Insert();
+            lblMessage.Visible = true;
+            lblMessage.Text = msg;
         }
+        #endregion
+
 
         protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
-            lblMessage.Visible = true;
-            lblMessage.Text = "A record was deleted";
+            myMessage("A record was deleted");
         }
 
-        protected void SqlDataSource2_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            lblMessage.Visible = true;
-            lblMessage.Text = "A new record was added";
+            pageInitialize();
         }
+
     }
 }
