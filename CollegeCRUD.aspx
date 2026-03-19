@@ -20,7 +20,20 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString3 %>" ProviderName="<%$ ConnectionStrings:ConnectionString3.ProviderName %>" SelectCommand="SELECT * FROM [tblCollege]" OnInserted="SqlDataSource2_Inserted" OnUpdated="SqlDataSource2_Updated">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString3 %>" ProviderName="<%$ ConnectionStrings:ConnectionString3.ProviderName %>" SelectCommand="SELECT * FROM [tblCollege] WHERE [Deleted] = 0" OnInserted="SqlDataSource2_Inserted" OnUpdated="SqlDataSource2_Updated" DeleteCommand="UPDATE tblCollege SET Deleted = ? WHERE (collegeID = ?)" InsertCommand="INSERT INTO tblCollege(Code, Description, Deleted) VALUES (?, ?, ?)" UpdateCommand="UPDATE tblCollege SET Code = ?, Description = ? WHERE (collegeID = ?)" >
+        <DeleteParameters>
+            <asp:Parameter Name="?" DefaultValue="1" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:ControlParameter ControlID="txtCode" Name="?" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtDescription" Name="?" PropertyName="Text" />
+            <asp:Parameter DefaultValue="0" Name="?" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:ControlParameter ControlID="txtCode" Name="?" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtDescription" Name="?" PropertyName="Text" />
+            <asp:ControlParameter ControlID="GridView1" Name="?" PropertyName="SelectedValue" />
+        </UpdateParameters>
     </asp:SqlDataSource>
 
     <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-success"></asp:Label>
@@ -40,8 +53,5 @@
         <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-primary" OnClick="btnUpdate_Click" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-secondary" OnClick="btnCancel_Click"/>
     </asp:Panel>
-
-
-
 
 </asp:Content>

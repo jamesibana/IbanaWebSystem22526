@@ -124,6 +124,7 @@
     <Content Include="Global.asax" />
     <Content Include="Ibana.aspx" />
     <Content Include="MyPrelimIbana.aspx" />
+    <Content Include="ProgramCRUD.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -182,6 +183,8 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="StudentInfoCRUD.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Test.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -250,6 +253,13 @@
     <Compile Include="MySite.Master.designer.cs">
       <DependentUpon>MySite.Master</DependentUpon>
     </Compile>
+    <Compile Include="ProgramCRUD.aspx.cs">
+      <DependentUpon>ProgramCRUD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProgramCRUD.aspx.designer.cs">
+      <DependentUpon>ProgramCRUD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -264,6 +274,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StudentInfoCRUD.aspx.cs">
+      <DependentUpon>StudentInfoCRUD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentInfoCRUD.aspx.designer.cs">
+      <DependentUpon>StudentInfoCRUD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
