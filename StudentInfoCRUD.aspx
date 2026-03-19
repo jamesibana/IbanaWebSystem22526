@@ -57,7 +57,7 @@
             <asp:Parameter Name="Sex" />
             <asp:ControlParameter ControlID="DropDownList1" Name="?" PropertyName="SelectedValue" />
             <asp:ControlParameter ControlID="ddlYearLevel" Name="?" PropertyName="SelectedValue" />
-            <asp:Parameter Name="index" />
+            <asp:ControlParameter ControlID="GridView1" Name="index" PropertyName="SelectedValue" />
         </UpdateParameters>
     </asp:SqlDataSource>
 
