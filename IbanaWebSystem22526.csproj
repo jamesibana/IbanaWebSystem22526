@@ -123,6 +123,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Ibana.aspx" />
+    <Content Include="MyLogIn.aspx" />
     <Content Include="MyPrelimIbana.aspx" />
     <Content Include="ProgramCRUD.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -231,6 +232,13 @@
     </Compile>
     <Compile Include="Ibana.aspx.designer.cs">
       <DependentUpon>Ibana.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyLogIn.aspx.cs">
+      <DependentUpon>MyLogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyLogIn.aspx.designer.cs">
+      <DependentUpon>MyLogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyPrelimIbana.aspx.cs">
       <DependentUpon>MyPrelimIbana.aspx</DependentUpon>
