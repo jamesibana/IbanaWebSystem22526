@@ -6,7 +6,7 @@
     <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
     <asp:TextBox ID="txtPW" runat="server"></asp:TextBox> <br />
 
-    <asp:Button ID="btnLogIn" runat="server" Text="Log In" OnClick="btnLogIn_Click" />
+    <asp:Button ID="btnLogIn" runat="server" Text="Log In" OnClick="btnLogIn_Click" /> <br />
 
     <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
@@ -15,7 +15,6 @@
             <asp:BoundField DataField="studIndex" HeaderText="studIndex" SortExpression="studIndex" />
             <asp:BoundField DataField="Firstname" HeaderText="Firstname" SortExpression="Firstname" />
             <asp:BoundField DataField="Lastname" HeaderText="Lastname" SortExpression="Lastname" />
-            <asp:BoundField DataField="studIndex" HeaderText="studIndex" SortExpression="studIndex" />
             <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
             <asp:BoundField DataField="YearLevel" HeaderText="YearLevel" SortExpression="YearLevel" />
         </Columns>
