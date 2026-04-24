@@ -36,6 +36,8 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
+        <asp:Label ID="lblStudName" runat="server" Text="Label"></asp:Label>
+
     <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-success"></asp:Label>
     <br />
 
@@ -52,6 +54,7 @@
         <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-primary"/>
         <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-primary" OnClick="btnUpdate_Click" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-secondary" OnClick="btnCancel_Click"/>
+
     </asp:Panel>
 
 </asp:Content>

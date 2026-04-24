@@ -20,7 +20,9 @@ namespace IbanaWebSystem22526
             int rowCount = GridView1.Rows.Count;
 
             if (rowCount != 0){
-                lblMessage.Text = "OK";
+                Session["StudName"] = GridView1.Rows[0].Cells[2].Text + " " + GridView1.Rows[0].Cells[3].Text;
+
+                Response.Redirect("CollegeCRUD.aspx");
             }
 
             else{
