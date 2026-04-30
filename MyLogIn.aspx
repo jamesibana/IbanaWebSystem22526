@@ -22,7 +22,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:StudentInfo %>" ProviderName="<%$ ConnectionStrings:StudentInfo.ProviderName %>" SelectCommand="SELECT A.ID, A.studIndex, B.Firstname, B.Lastname, B.YearLevel, C.Code FROM ((tblUNPW A INNER JOIN tblStudentInfo B ON A.studIndex = B.[index]) INNER JOIN tblProgram C ON B.ProgramID = C.ProgramID) WHERE (A.UN = ?) AND (A.PW = ?)">
         <SelectParameters>
             <asp:ControlParameter ControlID="txtUN" Name="?" PropertyName="Text" />
-            <asp:ControlParameter ControlID="txtPW" Name="?" PropertyName="Text" />
+            <asp:Parameter Name="?" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>
