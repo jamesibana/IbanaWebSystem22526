@@ -11,9 +11,19 @@ namespace IbanaWebSystem22526
     {
         private string sex;
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["StudName"] == null)
+            {
+                Response.Redirect("MyLogIn.aspx");
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
+
+            lblStudName.Text = "Session: " + Session["StudName"].ToString();
         }
 
         #region "UPDATE"

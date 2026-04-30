@@ -1,19 +1,19 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="IbanaWebSystem22526.Contact" %>
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/MySite.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="IbanaWebSystem22526.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
-        <h3>Your contact page.</h3>
+        <h2 id="title">James Carl Ibana</h2>
+        <h4>BS in Information Technology</h4>
+        <h5>University of Perpetual Help System DALTA - Calamba</h5>
         <address>
-            One Microsoft Way<br />
-            Redmond, WA 98052-6399<br />
-            <abbr title="Phone">P:</abbr>
-            425.555.0100
+            Barandal<br />
+            Calamba, Laguna 4027<br />
+            Phone:
+            +63 908 929 3709
         </address>
 
         <address>
-            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            <strong>Perpetual Email:</strong>   <a href="mailto:jamescarl.ibana@perpetual.edu.ph">jamescarl.ibana@perpetual.edu.ph</a><br />
         </address>
     </main>
 </asp:Content>

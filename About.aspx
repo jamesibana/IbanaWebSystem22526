@@ -1,4 +1,4 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="IbanaWebSystem22526.About" %>
+﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/MySite.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="IbanaWebSystem22526.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">

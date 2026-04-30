@@ -9,9 +9,20 @@ namespace IbanaWebSystem22526
 {
     public partial class ProgramCRUD : System.Web.UI.Page
     {
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["StudName"] == null)
+            {
+                Response.Redirect("MyLogIn.aspx");
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
+
+            lblStudName.Text = "Session: " + Session["StudName"].ToString();
         }
 
 

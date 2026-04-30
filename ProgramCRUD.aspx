@@ -41,6 +41,7 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     
+    <asp:Label ID="lblStudName" runat="server" Text="Label"></asp:Label>
 
     <asp:Label ID="lblMessage" runat="server" Text="" class="form-control btn btn-success"></asp:Label>
     <br />

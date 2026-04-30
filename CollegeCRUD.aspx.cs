@@ -25,7 +25,7 @@ namespace IbanaWebSystem22526
         {
             lblMessage.Visible = false;
 
-            lblStudName.Text = Session["StudName"].ToString();
+            lblStudName.Text = "Session: " + Session["StudName"].ToString();
         }
 
 
