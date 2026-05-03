@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
-    <!-- GREEN NEUMORPHIC FORM CSS -->
+    <!-- CSS -->
     <style>
-        /* Parallax Background */
+
         body {
             background-color: #e3efe8;
             background-image: radial-gradient(#c2d0c8 1px, transparent 1px);
@@ -12,17 +12,15 @@
             background-attachment: fixed; 
         }
 
-        /* The physical card container */
         .neo-form-card {
             background-color: #e3efe8;
             border-radius: 2rem;
             box-shadow: 15px 15px 30px #c2d0c8, -15px -15px 30px #ffffff;
             padding: 3rem;
-            max-width: 450px; /* Slightly narrower than the register form for a tighter look */
+            max-width: 450px; 
             margin: 4rem auto; 
         }
 
-        /* Sunken Textboxes */
         .form-control {
             background-color: #e3efe8 !important;
             border: none !important;
@@ -43,7 +41,7 @@
             margin-left: 1rem; 
         }
 
-        /* Custom Button Styling */
+        /* Buttons */
         .btn-neo {
             background-color: #e3efe8;
             color: #238551;
@@ -79,7 +77,6 @@
             <!-- Password Input -->
             <div class="mb-4">
                 <asp:Label ID="Label2" runat="server" Text="Password" CssClass="form-label"></asp:Label>
-                <!-- TextMode="Password" ensures the typing is hidden -->
                 <asp:TextBox ID="txtPW" runat="server" CssClass="form-control" TextMode="Password" placeholder="Enter password"></asp:TextBox>
             </div>
 
@@ -88,7 +85,7 @@
                 <asp:Button ID="btnLogIn" runat="server" Text="Log In" OnClick="btnLogIn_Click" CssClass="btn btn-neo" />
             </div>
 
-            <!-- Message Label for Errors -->
+            <!-- Message -->
             <div class="text-center mt-3">
                 <asp:Label ID="lblMessage" runat="server" Text="" Font-Bold="true" ForeColor="#d9534f"></asp:Label>
             </div>
@@ -96,8 +93,7 @@
         </div>
     </div>
 
-    <!-- Hidden Data Controls -->
-    <!-- Note: Added Visible="False" to GridView1 so it doesn't show the database table on screen -->
+    <!-- Data -->
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" Visible="False">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />

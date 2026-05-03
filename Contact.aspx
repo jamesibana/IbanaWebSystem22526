@@ -2,9 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
-    <!-- GREEN NEUMORPHIC BUSINESS CARD CSS -->
+    <!-- CSS -->
     <style>
-        /* Maintain the Parallax Background from Home */
+
         body {
             background-color: #e3efe8;
             background-image: radial-gradient(#c2d0c8 1px, transparent 1px);
@@ -12,7 +12,6 @@
             background-attachment: fixed; 
         }
 
-        /* Centers the card on the page */
         .business-card-wrapper {
             display: flex;
             justify-content: center;
@@ -21,17 +20,16 @@
             padding: 2rem;
         }
 
-        /* The Physical Card Design */
+        /* Card Design */
         .neo-business-card {
             background-color: #e3efe8;
             border-radius: 1.5rem;
-            /* Pushing out shadow to lift it off the background */
             box-shadow: 15px 15px 30px #c2d0c8, -15px -15px 30px #ffffff;
             width: 100%;
             max-width: 600px;
             padding: 3.5rem;
             transition: all 0.3s ease;
-            position: relative; /* Allows absolute positioning if needed */
+            position: relative;
         }
 
         .neo-business-card:hover {
@@ -39,7 +37,7 @@
             box-shadow: 20px 20px 40px #c2d0c8, -20px -20px 40px #ffffff;
         }
 
-        /* THE NEW "CONTACT ME" BADGE */
+        /* Badge */
         .card-badge {
             display: inline-block;
             background-color: #e3efe8;
@@ -55,7 +53,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Typography Styling */
+        /* Typography */
         .card-name {
             color: #1a3324;
             font-weight: 800;
@@ -74,7 +72,7 @@
             margin-bottom: 2rem;
         }
 
-        /* The Carved Divider Line */
+        /* Divider */
         .card-divider {
             height: 2px;
             background-color: transparent;
@@ -83,7 +81,7 @@
             box-shadow: inset 1px 1px 3px #c2d0c8, inset -1px -1px 3px #ffffff;
         }
 
-        /* Contact Details Layout */
+        /* Contact Details */
         .contact-details {
             display: flex;
             flex-direction: column;
@@ -118,17 +116,17 @@
     <div class="business-card-wrapper">
         <div class="neo-business-card">
             
-            <!-- The Carved "Contact Me" Badge -->
+            <!-- Badge -->
             <div class="card-badge">Contact Me</div>
             
-            <!-- Top Section: Identity -->
+            <!-- Top Section -->
             <h2 class="card-name">James Carl Ibana</h2>
             <div class="card-title">BS in Information Technology</div>
 
-            <!-- Carved Divider -->
+            <!-- Divider -->
             <hr class="card-divider" />
 
-            <!-- Bottom Section: Details Grid -->
+            <!-- Details -->
             <div class="contact-details">
                 <div class="contact-item">
                     <span class="contact-icon">🏫</span>

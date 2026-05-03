@@ -19,14 +19,12 @@ namespace IbanaWebSystem22526
             lblMessage.Visible = false;
         }
 
+        // Hash the password (Security)
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                // Convert the string into a byte array and hash it
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                // Convert the byte array back into a readable string of hex characters
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
@@ -38,7 +36,7 @@ namespace IbanaWebSystem22526
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            // 1. Check empty fields (Updated to check txtStudentNo)
+            // Check for empty fields
             if (string.IsNullOrWhiteSpace(txtStudentNumber.Text) ||
                 string.IsNullOrWhiteSpace(txtUN.Text) ||
                 string.IsNullOrWhiteSpace(txtPW.Text))
@@ -49,7 +47,7 @@ namespace IbanaWebSystem22526
                 return;
             }
 
-            // 2. Index validation (Search by Student Number)
+            // Index validation
             grdValidation.DataBind();
             int count = grdValidation.Rows.Count;
 
@@ -61,20 +59,14 @@ namespace IbanaWebSystem22526
                 return;
             }
 
-            // *** THE TRANSLATOR TRICK ***
-            // The student exists! Let's grab their internal database [index] 
-            // We use DataKeys[0] because the GridView secretly remembers it!
             string actualStudentIndex = grdValidation.DataKeys[0].Value.ToString();
 
 
-            // 3. Duplicate checking
-            // Inject the translated index into the SelectQuery parameter (Index 0)
+            // Index duplicate checking
             SqlDataSource1.SelectParameters[0].DefaultValue = actualStudentIndex;
-
             grdDuplicateCheck.DataBind();
-            int rowCount = grdDuplicateCheck.Rows.Count;
 
-            if (rowCount != 0)
+            if (grdDuplicateCheck.Rows.Count != 0)
             {
                 lblMessage.Visible = true;
                 lblMessage.Text = "Error: This Student is already registered!";
@@ -82,24 +74,31 @@ namespace IbanaWebSystem22526
                 return;
             }
 
-            // 4. Insertion
+            // Username duplicate checking
+            grdUsernameCheck.DataBind();
+
+            if (grdUsernameCheck.Rows.Count != 0)
+            {
+                lblMessage.Visible = true;
+                lblMessage.Text = "Error: Username already taken.";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
+
+            // Insertion
             try
             {
-                // Inject the translated index into the InsertQuery's 1st parameter
                 SqlDataSource1.InsertParameters[0].DefaultValue = actualStudentIndex;
 
-                // Hash the password and inject it into the InsertQuery's 3rd parameter
                 string myHashedPassword = HashPassword(txtPW.Text);
                 SqlDataSource1.InsertParameters[2].DefaultValue = myHashedPassword;
 
-                // NOW execute the insert
                 SqlDataSource1.Insert();
 
                 lblMessage.Visible = true;
                 lblMessage.Text = "You have successfully registered.";
                 lblMessage.ForeColor = Color.Green;
 
-                // Clear textboxes
                 txtStudentNumber.Text = "";
                 txtUN.Text = "";
                 txtPW.Text = "";

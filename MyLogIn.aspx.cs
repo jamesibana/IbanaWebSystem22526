@@ -32,30 +32,28 @@ namespace IbanaWebSystem22526
 
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
-            // Hash what the user typed
+            //Hash
             string attemptHash = HashPassword(txtPW.Text);
 
-            // Inject the hash into the 2nd parameter slot (Index 1)
+ 
             SqlDataSource1.SelectParameters[1].DefaultValue = attemptHash;
 
-            // Trigger the search
+
             GridView1.DataBind();
             int rowCount = GridView1.Rows.Count;
 
+            // Match check
             if (rowCount != 0)
             {
-                // 1. Create the session
+                // Create session
                 Session["StudName"] = GridView1.Rows[0].Cells[2].Text + " " + GridView1.Rows[0].Cells[3].Text;
 
-                // 2. Check if a ReturnUrl message exists in the web address
                 if (Request.QueryString["ReturnUrl"] != null)
                 {
-                    // If it exists, send them back to the exact page they requested!
                     Response.Redirect(Request.QueryString["ReturnUrl"]);
                 }
                 else
                 {
-                    // If it is null (meaning they visited MyLogIn.aspx directly), go to the default.
                     Response.Redirect("CollegeCRUD.aspx");
                 }
             }

@@ -13,9 +13,7 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <!-- GLOBAL GREEN NEUMORPHIC THEME -->
     <style>
-        /* Automatically applies the parallax background to every page! */
         body {
             background-color: #e3efe8;
             background-image: radial-gradient(#c2d0c8 1px, transparent 1px);
@@ -23,7 +21,6 @@
             background-attachment: fixed; 
         }
 
-        /* Neumorphic Navbar Styling */
         .neo-navbar {
             background-color: #e3efe8 !important;
             box-shadow: 0px 10px 20px #c2d0c8, 0px -10px 20px #ffffff;
@@ -32,10 +29,10 @@
             margin-bottom: 2rem;
         }
 
-        /* Removes the ugly box around the hamburger menu icon */
         .neo-navbar .navbar-toggler {
             border: none;
         }
+        
         .neo-navbar .navbar-toggler:focus {
             box-shadow: none;
             outline: none;
@@ -45,6 +42,8 @@
             color: #1a3324 !important; 
             font-weight: 800;
             letter-spacing: -0.5px;
+            line-height: 1.1;
+            text-align: center;
         }
         
         .neo-navbar .nav-link {
@@ -53,34 +52,47 @@
             transition: all 0.3s ease;
             border-radius: 10px;
             padding: 0.5rem 1rem !important;
+            margin: 0 0.2rem;
+            text-align: center; 
         }
 
         .neo-navbar .nav-link:hover {
             color: #238551 !important; 
-            box-shadow: inset 3px 3px 6px #c2d0c8, inset -3px -3px 6px #ffffff;
+            box-shadow: 4px 4px 8px #c2d0c8, -4px -4px 8px #ffffff; 
             background-color: #e3efe8;
+            transform: translateY(-1px); 
+        }
+
+        .neo-navbar .active-nav-link,
+        .neo-navbar .active-nav-link:hover { 
+            color: #238551 !important; 
+            box-shadow: inset 4px 4px 8px #c2d0c8, inset -4px -4px 8px #ffffff !important;
+            background-color: #d1e0d7 !important; 
+            font-weight: 800;
+            transform: translateY(1px) !important; 
         }
 
         .neo-welcome-text {
-            color: #1a3324 !important;
-            font-weight: 700;
+            cursor: default; 
+        }
+        
+        .neo-navbar .neo-welcome-text:hover {
+            box-shadow: none !important;
+            background-color: transparent !important;
+            transform: none !important;
         }
 
-        /* ==========================================
-           SESSION ALERT BOX STYLING
-           ========================================== */
         .neo-session-alert {
             display: none; 
             position: fixed; 
             top: 20px; 
             left: 50%; 
             transform: translateX(-50%); 
-            background-color: #df5b5b; /* The soft red from your image */
+            background-color: #df5b5b;
             color: white; 
             padding: 1.5rem 2.5rem; 
             border-radius: 1.5rem; 
             z-index: 9999; 
-            /* Soft shadow to lift it off the page */
             box-shadow: 10px 10px 30px rgba(223, 91, 91, 0.4), -5px -5px 15px rgba(255,255,255,0.5); 
             text-align: center; 
             min-width: 320px; 
@@ -90,19 +102,19 @@
         .neo-session-alert h5 {
             margin-top: 0; 
             font-weight: 800; 
-            color: #34495e; /* The dark blue text from your image */
+            color: #ffffff; 
             margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
         }
 
         .neo-session-btn {
-            background-color: #e8f0f6; /* Soft blueish-white */
-            color: #df5b5b; /* Red text */
+            background-color: #e8f0f6; 
+            color: #df5b5b;
             border: none;
             border-radius: 50px;
             font-weight: bold;
             padding: 0.6rem 2rem;
             margin-top: 0.8rem;
-            /* THE GLOW: A heavy white spread shadow behind the button */
             box-shadow: 0px 0px 25px 5px rgba(255, 255, 255, 0.85);
             transition: all 0.2s ease;
         }
@@ -133,26 +145,32 @@
 
         <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light neo-navbar">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">James Carl Ibana Web Application</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                
+                <a class="navbar-brand d-flex flex-column align-items-center" runat="server" href="~/">
+                    <span>James Carl Ibana</span>
+                    <span style="font-size: 0.75rem; color: #5c7465; font-weight: 700;">WEB APPLICATION</span>
+                </a>
+                
+                <!-- Mobile Toggler -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse d-lg-inline-flex">
+                <div class="collapse navbar-collapse">
 
-                    <ul class="navbar-nav me-auto">
+                    <!-- Left Navigation Group -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
 
-                        <!-- FIXED: Changed ms-4 to ms-lg-4. This keeps it inline on mobile, but spaced on desktop! -->
                         <li class="nav-item ms-lg-4"><a class="nav-link" runat="server" href="~/CollegeCRUD">College</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/ProgramCRUD">Program</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/StudentInfoCRUD">Student Info</a></li>
                     </ul>
 
-                    <ul class="navbar-nav">
+                    <!-- Right Navigation Group -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         <li class="nav-item" id="navLogin" runat="server">
                             <a class="nav-link" runat="server" href="~/MyLogIn">Log In</a>
                         </li>
@@ -161,13 +179,13 @@
                         </li>
 
                         <li class="nav-item" id="navWelcome" runat="server" visible="false">
-                            <span class="nav-link neo-welcome-text">Welcome,
-                                <asp:Label ID="lblUserName" runat="server"></asp:Label>!</span>
+                            <span class="nav-link neo-welcome-text d-flex flex-column align-items-center" style="line-height: 1.1;">
+                                <span style="font-size: 0.75rem; color: #5c7465; font-weight: 700; text-transform: uppercase;">Welcome,</span>
+                                <span style="color: #1a3324; font-weight: 800;"><asp:Label ID="lblUserName" runat="server"></asp:Label></span>
+                            </span>
                         </li>
                         <li class="nav-item" id="navLogout" runat="server" visible="false">
-                            <asp:LinkButton ID="btnLogOut" runat="server" CssClass="nav-link"
-                                OnClientClick="return confirm('Are you sure you want to log out?');"
-                                OnClick="btnLogOut_Click">Log Out</asp:LinkButton>
+                            <asp:LinkButton ID="btnLogOut" runat="server" CssClass="nav-link" OnClientClick="return confirm('Are you sure you want to log out?');" OnClick="btnLogOut_Click">Log Out</asp:LinkButton>
                         </li>
                     </ul>
 
@@ -175,6 +193,8 @@
 
             </div>
         </nav>
+        
+        <!-- Main Content -->
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -184,14 +204,38 @@
             </footer>
         </div>
     </form>
+    
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
 
-    <!-- SESSION WARNING TIMER -->
+    <!-- Active Page Script -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentPath = window.location.pathname.toLowerCase();
+            
+            if (currentPath === "/" || currentPath.endsWith("/default.aspx")) {
+                currentPath = "/home";
+            }
+
+            var navLinks = document.querySelectorAll('.neo-navbar .nav-link');
+            
+            navLinks.forEach(function(link) {
+                if (link.id && link.id.includes("btnLogOut")) return;
+                if (link.classList.contains("neo-welcome-text")) return;
+
+                var linkPath = link.pathname ? link.pathname.toLowerCase() : "";
+                
+                if (linkPath && currentPath.includes(linkPath)) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+    </script>
+
+    <!-- Session Warning Output -->
     <asp:PlaceHolder ID="phSessionTimer" runat="server" Visible="false">
         
-        <!-- UPDATED: Using the new CSS classes for the exact look in your image -->
         <div id="sessionWarningBox" class="neo-session-alert">
             <h5>Session Expiring!</h5>
             <p>Your session will expire in <strong id="timeLeft" style="font-size: 1.2em;">15</strong> seconds due to inactivity.</p>

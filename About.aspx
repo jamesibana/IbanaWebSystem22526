@@ -2,9 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
-    <!-- GREEN NEUMORPHIC ABOUT CSS -->
+    <!-- CSS -->
     <style>
-        /* Centers the content on the page */
+
         .about-wrapper {
             display: flex;
             justify-content: center;
@@ -13,7 +13,7 @@
             padding: 2rem;
         }
 
-        /* The Neumorphic Container */
+        /* Card */
         .neo-about-card {
             background-color: #e3efe8;
             border-radius: 2rem;
@@ -34,18 +34,17 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Divider Line */
+        /* Divider */
         .about-divider {
             height: 2px;
             background-color: transparent;
             border: none;
             margin: 2rem auto;
             width: 50%;
-            /* Raised shadow line */
             box-shadow: 1px 1px 3px #c2d0c8, -1px -1px 3px #ffffff;
         }
 
-        /* Paragraph Styling */
+        /* Paragraph */
         .about-text {
             color: #5c7465;
             font-size: 1.25rem;
@@ -58,12 +57,12 @@
     <div class="about-wrapper">
         <div class="neo-about-card">
             
-            <!-- Dynamic Title Setup -->
+            <!-- Title -->
             <h1 class="about-title">IbanaWebSystem22526</h1>
 
             <hr class="about-divider" />
 
-            <!-- The Description -->
+            <!-- Description -->
             <p class="about-text">
                 This web application is a semester-long project where features such as database access and secure authentication were added and improved. This complete web application serves as my submission for the Final Project of Web Systems and Technologies this Second Semester 2025-2026.
             </p>

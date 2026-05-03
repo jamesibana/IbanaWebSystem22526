@@ -2,12 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!-- GREEN NEUMORPHIC CRUD CSS -->
+    <!-- CSS -->
     <style>
-        /* The Disguised LinkButton */
+        /* LinkButton */
         .neo-link-btn {
             background-color: #e3efe8;
-            color: #238551 !important; /* Emerald Green */
+            color: #238551 !important;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -26,7 +26,7 @@
             transform: scale(0.98);
         }
 
-        /* GridView Table Styling */
+        /* GridView */
         .neo-gridview {
             background-color: #e3efe8 !important;
             border-radius: 1.5rem;
@@ -55,7 +55,6 @@
             border-bottom: 2px solid #c2d0c8;
         }
 
-        /* Sunken Textboxes & Dropdowns for the Form */
         .neo-form-control {
             background-color: #e3efe8 !important;
             border: none !important;
@@ -93,7 +92,7 @@
         .text-delete { color: #d9534f; }  
         .text-cancel { color: #5c7465; }  
         
-        /* The Card Container for the Edit Panel */
+        /* Cards */
         .neo-edit-card {
             background-color: #e3efe8;
             border-radius: 1.5rem;
@@ -104,7 +103,7 @@
             max-width: 600px;
         }
 
-        /* Alert Message Badge */
+        /* Alert */
         .neo-alert-success {
             display: inline-block;
             background-color: #238551; 
@@ -127,9 +126,7 @@
         <h3 style="color: #1a3324; font-weight: 800; letter-spacing: -1px;">Program CRUD</h3>
     </div>
 
-    <!-- ==========================================
-         THE DATA GRIDVIEW 
-         ========================================== -->
+    <!-- Data GridView -->
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProgramID,CollegeID" DataSourceID="Program" CssClass="table table-borderless neo-gridview" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDeleted="GridView1_RowDeleted">
         <Columns>
             <asp:TemplateField HeaderText="No.">
@@ -150,18 +147,16 @@
         </Columns>
     </asp:GridView>
 
-    <!-- ==========================================
-         BOTTOM ACTION AREA
-         ========================================== -->
+    <!-- Bottom Area -->
     <div class="mt-4 mb-4" style="padding-left: 1rem;">
         
-        <!-- 1. The Session Label -->
+        <!-- Session -->
         <asp:Label ID="lblStudName" runat="server" Text="Label" Font-Bold="true" ForeColor="#5c7465" style="display: block; margin-bottom: 1rem;"></asp:Label>
         
-        <!-- 2. The Alert Message -->
+        <!-- Alert -->
         <asp:Label ID="lblMessage" runat="server" CssClass="neo-alert-success"></asp:Label>
         
-        <!-- 3. The Add Record Button -->
+        <!-- LBTN Add New Record -->
         <div style="margin-top: 0.5rem;">
             <asp:LinkButton ID="lbtnAddNewRecord" runat="server" CssClass="neo-link-btn" OnClick="lbtnAddNewRecord_Click">
                 + Add New Record
@@ -193,9 +188,7 @@
     <asp:SqlDataSource ID="College" runat="server" ConnectionString="<%$ ConnectionStrings:College %>" ProviderName="<%$ ConnectionStrings:College.ProviderName %>" SelectCommand="SELECT CollegeID, Description FROM tblCollege WHERE (Deleted = 0)"></asp:SqlDataSource>
 
 
-    <!-- ==========================================
-         THE ADD/EDIT RECORD PANEL
-         ========================================== -->
+    <!-- Add/Edit -->
     <asp:Panel ID="pnlAddNewRecord" runat="server" Visible="false">
         <div class="neo-edit-card">
             <h4 style="color: #1a3324; font-weight: bold; margin-bottom: 1.5rem;">Record Details</h4>
@@ -206,7 +199,6 @@
             <asp:Label ID="Label2" runat="server" Text="Code" CssClass="neo-form-label"></asp:Label>
             <asp:TextBox ID="txtCode" runat="server" CssClass="form-control neo-form-control"></asp:TextBox>
 
-            <!-- Dropdown styled as a Neumorphic input! -->
             <asp:Label ID="Label3" runat="server" Text="College" CssClass="neo-form-label"></asp:Label>
             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control neo-form-control" DataSourceID="College" DataTextField="Description" DataValueField="CollegeID"></asp:DropDownList>
             
