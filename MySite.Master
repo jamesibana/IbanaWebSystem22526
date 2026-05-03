@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MySite.master.cs" Inherits="IbanaWebSystem22526.MySite" %>
-
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <meta charset="utf-8" />
@@ -15,13 +13,110 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <!-- GLOBAL GREEN NEUMORPHIC THEME -->
+    <style>
+        /* Automatically applies the parallax background to every page! */
+        body {
+            background-color: #e3efe8;
+            background-image: radial-gradient(#c2d0c8 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-attachment: fixed; 
+        }
+
+        /* Neumorphic Navbar Styling */
+        .neo-navbar {
+            background-color: #e3efe8 !important;
+            box-shadow: 0px 10px 20px #c2d0c8, 0px -10px 20px #ffffff;
+            border-bottom: 2px solid #ffffff; 
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        /* Removes the ugly box around the hamburger menu icon */
+        .neo-navbar .navbar-toggler {
+            border: none;
+        }
+        .neo-navbar .navbar-toggler:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .neo-navbar .navbar-brand {
+            color: #1a3324 !important; 
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .neo-navbar .nav-link {
+            color: #5c7465 !important; 
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .neo-navbar .nav-link:hover {
+            color: #238551 !important; 
+            box-shadow: inset 3px 3px 6px #c2d0c8, inset -3px -3px 6px #ffffff;
+            background-color: #e3efe8;
+        }
+
+        .neo-welcome-text {
+            color: #1a3324 !important;
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           SESSION ALERT BOX STYLING
+           ========================================== */
+        .neo-session-alert {
+            display: none; 
+            position: fixed; 
+            top: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background-color: #df5b5b; /* The soft red from your image */
+            color: white; 
+            padding: 1.5rem 2.5rem; 
+            border-radius: 1.5rem; 
+            z-index: 9999; 
+            /* Soft shadow to lift it off the page */
+            box-shadow: 10px 10px 30px rgba(223, 91, 91, 0.4), -5px -5px 15px rgba(255,255,255,0.5); 
+            text-align: center; 
+            min-width: 320px; 
+            border: none;
+        }
+
+        .neo-session-alert h5 {
+            margin-top: 0; 
+            font-weight: 800; 
+            color: #34495e; /* The dark blue text from your image */
+            margin-bottom: 0.8rem;
+        }
+
+        .neo-session-btn {
+            background-color: #e8f0f6; /* Soft blueish-white */
+            color: #df5b5b; /* Red text */
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 0.6rem 2rem;
+            margin-top: 0.8rem;
+            /* THE GLOW: A heavy white spread shadow behind the button */
+            box-shadow: 0px 0px 25px 5px rgba(255, 255, 255, 0.85);
+            transition: all 0.2s ease;
+        }
+
+        .neo-session-btn:hover {
+            transform: scale(0.95);
+            box-shadow: 0px 0px 15px 2px rgba(255, 255, 255, 0.9);
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
@@ -33,42 +128,107 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light neo-navbar">
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/">James Carl Ibana Web Application</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse d-lg-inline-flex">
+
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/CollegeCRUD">College</a></li>
+
+                        <!-- FIXED: Changed ms-4 to ms-lg-4. This keeps it inline on mobile, but spaced on desktop! -->
+                        <li class="nav-item ms-lg-4"><a class="nav-link" runat="server" href="~/CollegeCRUD">College</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/ProgramCRUD">Program</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/StudentInfoCRUD">Student Info</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/MyLogIn">Log In</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Register">Register</a></li>
                     </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item" id="navLogin" runat="server">
+                            <a class="nav-link" runat="server" href="~/MyLogIn">Log In</a>
+                        </li>
+                        <li class="nav-item" id="navRegister" runat="server">
+                            <a class="nav-link" runat="server" href="~/Register">Register</a>
+                        </li>
+
+                        <li class="nav-item" id="navWelcome" runat="server" visible="false">
+                            <span class="nav-link neo-welcome-text">Welcome,
+                                <asp:Label ID="lblUserName" runat="server"></asp:Label>!</span>
+                        </li>
+                        <li class="nav-item" id="navLogout" runat="server" visible="false">
+                            <asp:LinkButton ID="btnLogOut" runat="server" CssClass="nav-link"
+                                OnClientClick="return confirm('Are you sure you want to log out?');"
+                                OnClick="btnLogOut_Click">Log Out</asp:LinkButton>
+                        </li>
+                    </ul>
+
                 </div>
+
             </div>
         </nav>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
+            <hr style="border-top: 2px solid #c2d0c8; box-shadow: 0 1px 1px #ffffff;" />
+            <footer style="color: #5c7465; font-weight: 500;">
                 <p>&copy; <%: DateTime.Now.Year %> - James Carl Ibana</p>
             </footer>
         </div>
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+
+    <!-- SESSION WARNING TIMER -->
+    <asp:PlaceHolder ID="phSessionTimer" runat="server" Visible="false">
+        
+        <!-- UPDATED: Using the new CSS classes for the exact look in your image -->
+        <div id="sessionWarningBox" class="neo-session-alert">
+            <h5>Session Expiring!</h5>
+            <p>Your session will expire in <strong id="timeLeft" style="font-size: 1.2em;">15</strong> seconds due to inactivity.</p>
+            <button type="button" onclick="extendSession()" class="neo-session-btn">Stay Logged In</button>
+        </div>
+
+        <script type="text/javascript">
+            let sessionLength = 120;
+            let warningTime = 15;
+            let timeRemaining = sessionLength;
+            let timerInterval;
+
+            function startSessionTimer() {
+                timeRemaining = sessionLength;
+                document.getElementById('sessionWarningBox').style.display = 'none';
+                clearInterval(timerInterval);
+
+                timerInterval = setInterval(function () {
+                    timeRemaining--;
+
+                    if (timeRemaining <= warningTime && timeRemaining > 0) {
+                        document.getElementById('sessionWarningBox').style.display = 'block';
+                        document.getElementById('timeLeft').innerText = timeRemaining;
+                    }
+                    else if (timeRemaining <= 0) {
+                        window.location.href = "MyLogIn.aspx";
+                    }
+                }, 1000);
+            }
+
+            function extendSession() {
+                fetch(window.location.href);
+                startSessionTimer();
+            }
+
+            window.onload = startSessionTimer;
+        </script>
     </asp:PlaceHolder>
 </body>
 </html>

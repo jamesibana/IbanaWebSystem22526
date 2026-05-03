@@ -14,7 +14,7 @@ namespace IbanaWebSystem22526
         {
             if (Session["StudName"] == null)
             {
-                Response.Redirect("MyLogIn.aspx");
+                Response.Redirect("MyLogIn.aspx?ReturnUrl=ProgramCRUD.aspx");
             }
         }
 

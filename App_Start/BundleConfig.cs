@@ -35,6 +35,11 @@ namespace IbanaWebSystem22526
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
+
+            // --- ADDED THIS SECTION FOR YOUR BOOTSWATCH THEME ---
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap-morph.min.css", // Your new theme!
+                      "~/Content/site.css"));              // Your custom CSS
         }
 
         public static void RegisterJQueryScriptManager()

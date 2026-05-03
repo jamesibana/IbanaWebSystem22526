@@ -24,15 +24,6 @@ namespace IbanaWebSystem22526
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// StudentInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource StudentInfo;
-
-        /// <summary>
         /// lblStudName control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,24 @@ namespace IbanaWebSystem22526
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnAddNewRecord;
+
+        /// <summary>
+        /// StudentInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource StudentInfo;
+
+        /// <summary>
+        /// ProgramStud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProgramStud;
 
         /// <summary>
         /// pnlAddNewRecord control.
@@ -202,15 +211,6 @@ namespace IbanaWebSystem22526
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-
-        /// <summary>
-        /// ProgramStud control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProgramStud;
 
         /// <summary>
         /// Label8 control.

@@ -44,8 +44,20 @@ namespace IbanaWebSystem22526
 
             if (rowCount != 0)
             {
+                // 1. Create the session
                 Session["StudName"] = GridView1.Rows[0].Cells[2].Text + " " + GridView1.Rows[0].Cells[3].Text;
-                Response.Redirect("CollegeCRUD.aspx");
+
+                // 2. Check if a ReturnUrl message exists in the web address
+                if (Request.QueryString["ReturnUrl"] != null)
+                {
+                    // If it exists, send them back to the exact page they requested!
+                    Response.Redirect(Request.QueryString["ReturnUrl"]);
+                }
+                else
+                {
+                    // If it is null (meaning they visited MyLogIn.aspx directly), go to the default.
+                    Response.Redirect("CollegeCRUD.aspx");
+                }
             }
             else
             {

@@ -38,8 +38,8 @@ namespace IbanaWebSystem22526
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            //Check empty fields
-            if (string.IsNullOrWhiteSpace(txtStudentIndex.Text) ||
+            // 1. Check empty fields (Updated to check txtStudentNo)
+            if (string.IsNullOrWhiteSpace(txtStudentNumber.Text) ||
                 string.IsNullOrWhiteSpace(txtUN.Text) ||
                 string.IsNullOrWhiteSpace(txtPW.Text))
             {
@@ -49,39 +49,48 @@ namespace IbanaWebSystem22526
                 return;
             }
 
-            //Index validation
+            // 2. Index validation (Search by Student Number)
             grdValidation.DataBind();
-            // Count the rows it found
             int count = grdValidation.Rows.Count;
 
             if (count == 0)
             {
-                // If the row count is zero, the index does not exist.
                 lblMessage.Visible = true;
-                lblMessage.Text = "Error: Invalid Student Index.";
-                return; // Stop the registration
+                lblMessage.Text = "Error: Invalid Student Number.";
+                lblMessage.ForeColor = Color.Red;
+                return;
             }
 
-            //Duplicate checking
-            grdDuplicateCheck.DataBind();
+            // *** THE TRANSLATOR TRICK ***
+            // The student exists! Let's grab their internal database [index] 
+            // We use DataKeys[0] because the GridView secretly remembers it!
+            string actualStudentIndex = grdValidation.DataKeys[0].Value.ToString();
 
-            // Count the rows it found
+
+            // 3. Duplicate checking
+            // Inject the translated index into the SelectQuery parameter (Index 0)
+            SqlDataSource1.SelectParameters[0].DefaultValue = actualStudentIndex;
+
+            grdDuplicateCheck.DataBind();
             int rowCount = grdDuplicateCheck.Rows.Count;
 
             if (rowCount != 0)
             {
-                // If the row count is NOT zero, it found a match in the database.
                 lblMessage.Visible = true;
-                lblMessage.Text = "Error: This Student Index is already registered!";
-                return; // Stop the registration
+                lblMessage.Text = "Error: This Student is already registered!";
+                lblMessage.ForeColor = Color.Red;
+                return;
             }
 
-            //Insertion
+            // 4. Insertion
             try
             {
-                // Hash the password and inject it into the SqlDataSource parameter
+                // Inject the translated index into the InsertQuery's 1st parameter
+                SqlDataSource1.InsertParameters[0].DefaultValue = actualStudentIndex;
+
+                // Hash the password and inject it into the InsertQuery's 3rd parameter
                 string myHashedPassword = HashPassword(txtPW.Text);
-                SqlDataSource1.InsertParameters["HashedPW"].DefaultValue = myHashedPassword;
+                SqlDataSource1.InsertParameters[2].DefaultValue = myHashedPassword;
 
                 // NOW execute the insert
                 SqlDataSource1.Insert();
@@ -91,14 +100,12 @@ namespace IbanaWebSystem22526
                 lblMessage.ForeColor = Color.Green;
 
                 // Clear textboxes
-                txtStudentIndex.Text = "";
+                txtStudentNumber.Text = "";
                 txtUN.Text = "";
                 txtPW.Text = "";
             }
-
             catch (Exception ex)
             {
-                //Error checking
                 lblMessage.Visible = true;
                 lblMessage.Text = "A database error occurred: " + ex.Message;
                 lblMessage.ForeColor = Color.Red;
