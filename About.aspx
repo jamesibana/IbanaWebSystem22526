@@ -1,10 +1,9 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/MySite.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="IbanaWebSystem22526.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <!-- CSS -->
     <style>
-
         .about-wrapper {
             display: flex;
             justify-content: center;
@@ -25,13 +24,15 @@
             text-align: center;
         }
 
-        /* Title Styling */
+        /* Title */
         .about-title {
             color: #1a3324;
             font-weight: 800;
             font-size: 3rem;
             letter-spacing: -1px;
             margin-bottom: 1.5rem;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         /* Divider */
@@ -56,7 +57,7 @@
 
     <div class="about-wrapper">
         <div class="neo-about-card">
-            
+
             <!-- Title -->
             <h1 class="about-title">IbanaWebSystem22526</h1>
 
